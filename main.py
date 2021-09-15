@@ -2,12 +2,6 @@ import os
 import cv2
 import argparse
 
-"""
-1. Read all image files in a dir then put them into a list
-2. Order the list 
-3. Create video file
-"""
-
 def main(input_dir="/tmp", out_filename="/tmp/out.avi"):
     print('img2vid')
     print('input ',input_dir)
@@ -27,11 +21,16 @@ def main(input_dir="/tmp", out_filename="/tmp/out.avi"):
 
     for image in images:
         video.write(cv2.imread(os.path.join(input_dir, image)))
-        print(image)
 
     video.release()
     print('done')
 
 if __name__ == "__main__":
 
-    main()    
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input', default = '/tmp', help="directory which is keeping png files")
+    parser.add_argument('output', default = '/tmp/out.avi', help='output file name for ex /tmp/out.avi')
+
+    args = parser.parse_args()
+
+    main(input_dir=args.input, out_filename=args.output)    
