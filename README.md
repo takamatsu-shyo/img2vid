@@ -5,7 +5,9 @@
 3. Create video file
 
 # How to
+```
 python main.py /input/dir ./output.avi
+```
 
 ## Ref
 https://stackoverflow.com/questions/44947505/how-to-make-a-movie-out-of-images-in-python
