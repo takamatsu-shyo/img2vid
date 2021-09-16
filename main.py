@@ -1,6 +1,7 @@
 import os
 import cv2
 import argparse
+from tqdm import tqdm
 
 def main(input_dir="/tmp", out_filename="/tmp/out.avi"):
     print('img2vid')
@@ -19,7 +20,8 @@ def main(input_dir="/tmp", out_filename="/tmp/out.avi"):
 
     video = cv2.VideoWriter(out_filename, 0, 30, (width, height))
 
-    for image in images:
+    for i in tqdm(range(len(images))):
+        image = images[i]
         video.write(cv2.imread(os.path.join(input_dir, image)))
 
     video.release()
